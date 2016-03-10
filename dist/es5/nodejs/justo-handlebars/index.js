@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });var _Handlebars = require("./lib/Handlebars");Object.defineProperty(exports, "Handlebars", { enumerable: true, get: function get() {return _interopRequireDefault(_Handlebars).default;} });function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
