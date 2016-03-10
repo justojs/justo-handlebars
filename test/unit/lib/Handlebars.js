@@ -57,6 +57,22 @@ suite("Handlebars", function() {
       hbs.hasHelper("test").must.be.eq(false);
     });
 
+    suite("concat", function() {
+      test("concat one two", function() {
+        hbs.renderFile(
+          DATA + "/helpers/concat2.hbs",
+          {scope: {x: "one", y: "two"}}
+        ).must.be.eq("onetwo\n");
+      });
+
+      test("concat one two three", function() {
+        hbs.renderFile(
+          DATA + "/helpers/concat3.hbs",
+          {scope: {x: "one", y: "two", z: "three"}}
+        ).must.be.eq("onetwothree\n");
+      });
+    });
+
     suite("http", function() {
       test("http starting with http:", function() {
         hbs.renderFile(
