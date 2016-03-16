@@ -24,6 +24,10 @@ var registerBuiltInHelpers = Symbol();var _class = function () {
         return args.slice(0, args.length - 1).join("");});
 
 
+      this.registerHelper("replace", function () {
+        return (arguments.length <= 0 ? undefined : arguments[0]).replace(arguments.length <= 1 ? undefined : arguments[1], typeof (arguments.length <= 2 ? undefined : arguments[2]) == "string" ? arguments.length <= 2 ? undefined : arguments[2] : "");});
+
+
       this.registerHelper("http", function (url) {
         if (/^http[s]?:/.test(url)) return url;else 
         return "http://" + url;});

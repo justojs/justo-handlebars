@@ -57,6 +57,22 @@ suite("Handlebars", function() {
       hbs.hasHelper("test").must.be.eq(false);
     });
 
+    suite("replace", function() {
+      test("replace one two", function() {
+        hbs.renderFile(
+          DATA + "/helpers/replace2.hbs",
+          {scope: {x: "justo-plugin-test", y: "justo-plugin-"}}
+        ).must.be.eq("test\n");
+      });
+
+      test("replace one two three", function() {
+        hbs.renderFile(
+          DATA + "/helpers/replace3.hbs",
+          {scope: {x: "justo-plugin-test", y: "justo-plugin-", z: "JUSTO-PLUGIN-"}}
+        ).must.be.eq("JUSTO-PLUGIN-test\n");
+      });
+    });
+
     suite("concat", function() {
       test("concat one two", function() {
         hbs.renderFile(
