@@ -29,6 +29,7 @@ var registerBuiltInHelpers = Symbol();var _class = function () {
 
 
       this.registerHelper("http", function (url) {
+        if (!url) return "";else 
         if (/^http[s]?:/.test(url)) return url;else 
         return "http://" + url;});
 

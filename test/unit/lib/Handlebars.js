@@ -90,6 +90,13 @@ suite("Handlebars", function() {
     });
 
     suite("http", function() {
+      test("http none", function() {
+        hbs.renderFile(
+          DATA + "/helpers/http.hbs",
+          {scope: {}}
+        ).must.be.eq("\n");
+      });
+
       test("http starting with http:", function() {
         hbs.renderFile(
           DATA + "/helpers/http.hbs",
