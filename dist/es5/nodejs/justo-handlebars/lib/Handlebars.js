@@ -20,6 +20,14 @@ var registerBuiltInHelpers = Symbol();var _class = function () {
 
 
     registerBuiltInHelpers, value: function value() {
+      this.registerHelper("lowercase", function (text) {
+        return text ? text.toString().toLowerCase() : "";});
+
+
+      this.registerHelper("uppercase", function (text) {
+        return text ? text.toString().toUpperCase() : "";});
+
+
       this.registerHelper("concat", function () {for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {args[_key] = arguments[_key];}
         return args.slice(0, args.length - 1).join("");});
 

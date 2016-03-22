@@ -57,6 +57,52 @@ suite("Handlebars", function() {
       hbs.hasHelper("test").must.be.eq(false);
     });
 
+    suite("lowercase", function() {
+      test("lowercase text", function() {
+        hbs.renderFile(
+          DATA + "/helpers/lowercase.hbs",
+          {scope: {text: "hElLo"}}
+        ).must.be.eq("hello\n");
+      });
+
+      test("lowercase ''", function() {
+        hbs.renderFile(
+          DATA + "/helpers/lowercase.hbs",
+          {scope: {text: ""}}
+        ).must.be.eq("\n");
+      });
+
+      test("lowercase undefined", function() {
+        hbs.renderFile(
+          DATA + "/helpers/lowercase.hbs",
+          {scope: {text: undefined}}
+        ).must.be.eq("\n");
+      });
+    });
+
+    suite("uppercase", function() {
+      test("uppercase text", function() {
+        hbs.renderFile(
+          DATA + "/helpers/uppercase.hbs",
+          {scope: {text: "hElLo"}}
+        ).must.be.eq("HELLO\n");
+      });
+
+      test("uppercase ''", function() {
+        hbs.renderFile(
+          DATA + "/helpers/uppercase.hbs",
+          {scope: {text: ""}}
+        ).must.be.eq("\n");
+      });
+
+      test("uppercase undefined", function() {
+        hbs.renderFile(
+          DATA + "/helpers/uppercase.hbs",
+          {scope: {text: undefined}}
+        ).must.be.eq("\n");
+      });
+    });
+
     suite("replace", function() {
       test("replace one two", function() {
         hbs.renderFile(
