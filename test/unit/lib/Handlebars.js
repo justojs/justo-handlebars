@@ -57,6 +57,15 @@ suite("Handlebars", function() {
       hbs.hasHelper("test").must.be.eq(false);
     });
 
+    suite("esc", function() {
+      test("esc }", function() {
+        hbs.renderFile(
+          DATA + "/helpers/esc.hbs",
+          {scope: {text: "}"}}
+        ).must.be.eq("}\n");
+      });
+    });
+
     suite("lowercase", function() {
       test("lowercase text", function() {
         hbs.renderFile(

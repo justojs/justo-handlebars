@@ -20,6 +20,10 @@ var registerBuiltInHelpers = Symbol();var _class = function () {
 
 
     registerBuiltInHelpers, value: function value() {
+      this.registerHelper("esc", function (text) {
+        return text;});
+
+
       this.registerHelper("lowercase", function (text) {
         return text ? text.toString().toLowerCase() : "";});
 
