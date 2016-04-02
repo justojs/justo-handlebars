@@ -57,6 +57,22 @@ suite("Handlebars", function() {
       hbs.hasHelper("test").must.be.eq(false);
     });
 
+    suite("contain", function() {
+      test("contain coll item : true", function() {
+        hbs.renderFile(
+          DATA + "/helpers/contain.hbs",
+          {scope: {coll: ["buongiorno", "buonasera"], item: "buonasera"}}
+        ).must.be.eq("TRUE\n");
+      });
+
+      test("contain coll item : false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/contain.hbs",
+          {scope: {coll: ["buongiorno", "buonasera"], item: "buona sera"}}
+        ).must.be.eq("\n");
+      });
+    });
+
     suite("esc", function() {
       test("esc }", function() {
         hbs.renderFile(
