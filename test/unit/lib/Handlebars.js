@@ -278,20 +278,48 @@ suite("Handlebars", function() {
           {scope: {x: 0, y: [3, 2, 1]}}
         ).must.be.eq("\n");
       });
+
+      test("in value item1 item2 item3 : true", function() {
+        hbs.renderFile(
+          DATA + "/helpers/in-list.hbs",
+          {scope: {x: "one", y: "two", z: "three", value: "three"}}
+        ).must.be.eq("OK\n");
+      });
+
+      test("in value item1 item2 item3 : false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/in-list.hbs",
+          {scope: {x: "one", y: "two", z: "three", value: "four"}}
+        ).must.be.eq("\n");
+      });
     });
 
     suite("nin", function() {
-      test("in val array : true", function() {
+      test("nin val array : true", function() {
         hbs.renderFile(
           DATA + "/helpers/nin.hbs",
           {scope: {x: 0, y: [1, 2, 3]}}
         ).must.be.eq("OK\n");
       });
 
-      test("in x y : false", function() {
+      test("nin x y : false", function() {
         hbs.renderFile(
           DATA + "/helpers/nin.hbs",
           {scope: {x: 2, y: [3, 2, 1]}}
+        ).must.be.eq("\n");
+      });
+
+      test("nin value item1 item2 item3 : true", function() {
+        hbs.renderFile(
+          DATA + "/helpers/nin-list.hbs",
+          {scope: {x: "one", y: "two", z: "three", value: "four"}}
+        ).must.be.eq("OK\n");
+      });
+
+      test("nin value item1 item2 item3 : false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/nin-list.hbs",
+          {scope: {x: "one", y: "two", z: "three", value: "three"}}
         ).must.be.eq("\n");
       });
     });

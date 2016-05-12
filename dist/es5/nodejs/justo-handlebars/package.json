@@ -1,11 +1,11 @@
 {
   "name": "justo-handlebars",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Handlebars support for Justo.js.",
   "homepage": "http://justojs.org",
   "author": {
     "name": "Justo Labs",
-    "email": "justojs@justolabs.com",
+    "email": "info@justolabs.com",
     "url": "http://justojs.org"
   },
   "contributors": [
@@ -33,7 +33,7 @@
     "npm": ">= 3.0.0"
   },
   "dependencies": {
-    "handlebars": "*",
+    "handlebars": ">= 4.0.0",
     "justo-fs": "*"
   },
   "peerDependencies": {},
