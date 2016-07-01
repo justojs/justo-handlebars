@@ -20,6 +20,10 @@ var registerBuiltInHelpers = Symbol();var _class = function () {
 
 
     registerBuiltInHelpers, value: function value() {
+      this.registerHelper("length", function (coll) {
+        return coll.length;});
+
+
       this.registerHelper("contain", function (coll, item) {
         return coll.indexOf(item) >= 0;});
 

@@ -73,6 +73,22 @@ suite("Handlebars", function() {
       });
     });
 
+    suite("length", function() {
+      test("length string", function() {
+        hbs.renderFile(
+          DATA + "/helpers/length.hbs",
+          {scope: {coll: "buonasera"}}
+        ).must.be.eq("9\n");
+      });
+
+      test("length array", function() {
+        hbs.renderFile(
+          DATA + "/helpers/length.hbs",
+          {scope: {coll: ["b", "u", "o", "n"]}}
+        ).must.be.eq("4\n");
+      });
+    });
+
     suite("esc", function() {
       test("esc }", function() {
         hbs.renderFile(
