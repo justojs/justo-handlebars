@@ -25,7 +25,9 @@ var registerBuiltInHelpers = Symbol();var _class = function () {
 
 
       this.registerHelper("contain", function (coll, item) {
-        return coll.indexOf(item) >= 0;});
+        var res = false;
+        if (coll) res = coll.indexOf(item) >= 0;
+        return res;});
 
 
       this.registerHelper("esc", function (text) {

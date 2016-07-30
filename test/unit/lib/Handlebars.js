@@ -58,6 +58,20 @@ suite("Handlebars", function() {
     });
 
     suite("contain", function() {
+      test("contain undefined item : false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/contain.hbs",
+          {scope: {coll: undefined, item: "buonasera"}}
+        ).must.be.eq("\n");
+      });
+
+      test("contain null item : false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/contain.hbs",
+          {scope: {coll: null, item: "buonasera"}}
+        ).must.be.eq("\n");
+      });
+
       test("contain coll item : true", function() {
         hbs.renderFile(
           DATA + "/helpers/contain.hbs",
