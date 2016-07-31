@@ -158,6 +158,52 @@ suite("Handlebars", function() {
       });
     });
 
+    suite("capitalize", function() {
+      test("capitalize text", function() {
+        hbs.renderFile(
+          DATA + "/helpers/capitalize.hbs",
+          {scope: {text: "hello"}}
+        ).must.be.eq("Hello\n");
+      });
+
+      test("capitalize ''", function() {
+        hbs.renderFile(
+          DATA + "/helpers/capitalize.hbs",
+          {scope: {text: ""}}
+        ).must.be.eq("\n");
+      });
+
+      test("capitalize undefined", function() {
+        hbs.renderFile(
+          DATA + "/helpers/capitalize.hbs",
+          {scope: {text: undefined}}
+        ).must.be.eq("\n");
+      });
+    });
+
+    suite("decapitalize", function() {
+      test("decapitalize text", function() {
+        hbs.renderFile(
+          DATA + "/helpers/decapitalize.hbs",
+          {scope: {text: "HELLO"}}
+        ).must.be.eq("hELLO\n");
+      });
+
+      test("decapitalize ''", function() {
+        hbs.renderFile(
+          DATA + "/helpers/decapitalize.hbs",
+          {scope: {text: ""}}
+        ).must.be.eq("\n");
+      });
+
+      test("decapitalize undefined", function() {
+        hbs.renderFile(
+          DATA + "/helpers/decapitalize.hbs",
+          {scope: {text: undefined}}
+        ).must.be.eq("\n");
+      });
+    });
+
     suite("replace", function() {
       test("replace one two", function() {
         hbs.renderFile(

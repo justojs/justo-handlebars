@@ -42,6 +42,14 @@ var registerBuiltInHelpers = Symbol();var _class = function () {
         return text ? text.toString().toUpperCase() : "";});
 
 
+      this.registerHelper("capitalize", function (text) {
+        return text ? text[0].toUpperCase() + text.slice(1) : "";});
+
+
+      this.registerHelper("decapitalize", function (text) {
+        return text ? text[0].toLowerCase() + text.slice(1) : "";});
+
+
       this.registerHelper("concat", function () {for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {args[_key] = arguments[_key];}
         return args.slice(0, args.length - 1).join("");});
 
