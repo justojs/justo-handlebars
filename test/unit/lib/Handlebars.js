@@ -1,7 +1,6 @@
 //imports
 const justo = require("justo");
 const init = justo.init;
-const fin = justo.fin;
 const suite = justo.suite;
 const test = justo.test;
 const Handlebars = require("../../../dist/es5/nodejs/justo-handlebars").Handlebars;
@@ -55,6 +54,36 @@ suite("Handlebars", function() {
       ).must.be.eq("OK\n");
 
       hbs.hasHelper("test").must.be.eq(false);
+    });
+
+    suite("like", function() {
+      test("like value pattern:string : true", function() {
+        hbs.renderFile(
+          DATA + "/helpers/like.hbs",
+          {scope: {value: "hola", pattern: ".*hola.*"}}
+        ).must.be.eq("true\n");
+      });
+
+      test("like value pattern:RegExp : true", function() {
+        hbs.renderFile(
+          DATA + "/helpers/like.hbs",
+          {scope: {value: "hola", pattern: /.*hola.*/}}
+        ).must.be.eq("true\n");
+      });
+
+      test("like value pattern:string : false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/like.hbs",
+          {scope: {value: "hola", pattern: "adiós"}}
+        ).must.be.eq("false\n");
+      });
+
+      test("like value pattern:RegExp : false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/like.hbs",
+          {scope: {value: "hola", pattern: /adiós/}}
+        ).must.be.eq("false\n");
+      });
     });
 
     suite("contain", function() {
