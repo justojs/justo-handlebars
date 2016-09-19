@@ -20,6 +20,36 @@ var registerBuiltInHelpers = Symbol();var _class = function () {
 
 
     registerBuiltInHelpers, value: function value() {
+      this.registerHelper("and", function () {
+        var res;
+
+
+        res = false;for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {args[_key] = arguments[_key];}var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {
+
+          for (var _iterator = args.slice(0, args.length - 1)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {var value = _step.value;
+            res = !!value;
+            if (!res) break;
+          }} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}
+
+
+        return res;
+      });
+
+      this.registerHelper("or", function () {
+        var res;
+
+
+        res = false;for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {args[_key2] = arguments[_key2];}var _iteratorNormalCompletion2 = true;var _didIteratorError2 = false;var _iteratorError2 = undefined;try {
+
+          for (var _iterator2 = args.slice(0, args.length - 1)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {var value = _step2.value;
+            res = !!value;
+            if (res) break;
+          }} catch (err) {_didIteratorError2 = true;_iteratorError2 = err;} finally {try {if (!_iteratorNormalCompletion2 && _iterator2.return) {_iterator2.return();}} finally {if (_didIteratorError2) {throw _iteratorError2;}}}
+
+
+        return res;
+      });
+
       this.registerHelper("like", function (value, pattern) {
         if (!(pattern instanceof RegExp)) pattern = new RegExp(pattern);
         return pattern.test(value);
@@ -55,11 +85,11 @@ var registerBuiltInHelpers = Symbol();var _class = function () {
         return text ? text[0].toLowerCase() + text.slice(1) : "";
       });
 
-      this.registerHelper("concat", function () {for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {args[_key] = arguments[_key];}
+      this.registerHelper("concat", function () {for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {args[_key3] = arguments[_key3];}
         return args.slice(0, args.length - 1).join("");
       });
 
-      this.registerHelper("replace", function () {for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {args[_key2] = arguments[_key2];}
+      this.registerHelper("replace", function () {for (var _len4 = arguments.length, args = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {args[_key4] = arguments[_key4];}
         return args[0].replace(args[1], typeof args[2] == "string" ? args[2] : "");
       });
 
@@ -102,7 +132,7 @@ var registerBuiltInHelpers = Symbol();var _class = function () {
       });
 
       this.registerHelper("in", function (value) {
-        var coll;for (var _len3 = arguments.length, rest = Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {rest[_key3 - 1] = arguments[_key3];}
+        var coll;for (var _len5 = arguments.length, rest = Array(_len5 > 1 ? _len5 - 1 : 0), _key5 = 1; _key5 < _len5; _key5++) {rest[_key5 - 1] = arguments[_key5];}
 
 
         if (rest.length == 2) coll = rest[0];else
@@ -113,7 +143,7 @@ var registerBuiltInHelpers = Symbol();var _class = function () {
       });
 
       this.registerHelper("nin", function (value) {
-        var coll;for (var _len4 = arguments.length, rest = Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {rest[_key4 - 1] = arguments[_key4];}
+        var coll;for (var _len6 = arguments.length, rest = Array(_len6 > 1 ? _len6 - 1 : 0), _key6 = 1; _key6 < _len6; _key6++) {rest[_key6 - 1] = arguments[_key6];}
 
 
         if (rest.length == 2) coll = rest[0];else
@@ -128,15 +158,15 @@ var registerBuiltInHelpers = Symbol();var _class = function () {
       });
 
       this.registerHelper("coalesce", function (args) {
-        var res;var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {
+        var res;var _iteratorNormalCompletion3 = true;var _didIteratorError3 = false;var _iteratorError3 = undefined;try {
 
 
-          for (var _iterator = args[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {var arg = _step.value;
+          for (var _iterator3 = args[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {var arg = _step3.value;
             if (arg !== undefined && arg !== null) {
               res = arg;
               break;
             }
-          }} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}
+          }} catch (err) {_didIteratorError3 = true;_iteratorError3 = err;} finally {try {if (!_iteratorNormalCompletion3 && _iterator3.return) {_iterator3.return();}} finally {if (_didIteratorError3) {throw _iteratorError3;}}}
 
 
         return res;

@@ -56,6 +56,220 @@ suite("Handlebars", function() {
       hbs.hasHelper("test").must.be.eq(false);
     });
 
+    suite("and", function() {
+      test("and true", function() {
+        hbs.renderFile(
+          DATA + "/helpers/and1.hbs",
+          {scope: {one: true}}
+        ).must.be.eq("true\n");
+      });
+
+      test("and false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/and1.hbs",
+          {scope: {one: false}}
+        ).must.be.eq("false\n");
+      });
+
+      test("and undefined", function() {
+        hbs.renderFile(
+          DATA + "/helpers/and1.hbs",
+          {scope: {one: undefined}}
+        ).must.be.eq("false\n");
+      });
+
+      test("and true true", function() {
+        hbs.renderFile(
+          DATA + "/helpers/and2.hbs",
+          {scope: {one: true, two: true}}
+        ).must.be.eq("true\n");
+      });
+
+      test("and true false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/and2.hbs",
+          {scope: {one: true, two: false}}
+        ).must.be.eq("false\n");
+      });
+
+      test("and false true", function() {
+        hbs.renderFile(
+          DATA + "/helpers/and2.hbs",
+          {scope: {one: false, two: true}}
+        ).must.be.eq("false\n");
+      });
+
+      test("and false false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/and2.hbs",
+          {scope: {one: false, two: false}}
+        ).must.be.eq("false\n");
+      });
+
+      test("and true true true", function() {
+        hbs.renderFile(
+          DATA + "/helpers/and3.hbs",
+          {scope: {one: true, two: true, three: true}}
+        ).must.be.eq("true\n");
+      });
+
+      test("and true true false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/and3.hbs",
+          {scope: {one: true, two: false, three: false}}
+        ).must.be.eq("false\n");
+      });
+
+      test("and true false true", function() {
+        hbs.renderFile(
+          DATA + "/helpers/and3.hbs",
+          {scope: {one: true, two: false, three: true}}
+        ).must.be.eq("false\n");
+      });
+
+      test("and true false false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/and3.hbs",
+          {scope: {one: true, two: false, three: false}}
+        ).must.be.eq("false\n");
+      });
+
+      test("and false true true", function() {
+        hbs.renderFile(
+          DATA + "/helpers/and3.hbs",
+          {scope: {one: false, two: true, three: true}}
+        ).must.be.eq("false\n");
+      });
+
+      test("and false true false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/and3.hbs",
+          {scope: {one: false, two: true, three: false}}
+        ).must.be.eq("false\n");
+      });
+
+      test("and false false true", function() {
+        hbs.renderFile(
+          DATA + "/helpers/and3.hbs",
+          {scope: {one: false, two: false, three: true}}
+        ).must.be.eq("false\n");
+      });
+
+      test("and false false false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/and3.hbs",
+          {scope: {one: false, two: false, three: false}}
+        ).must.be.eq("false\n");
+      });
+    });
+
+    suite("or", function() {
+      test("or true", function() {
+        hbs.renderFile(
+          DATA + "/helpers/or1.hbs",
+          {scope: {one: true}}
+        ).must.be.eq("true\n");
+      });
+
+      test("or false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/or1.hbs",
+          {scope: {one: false}}
+        ).must.be.eq("false\n");
+      });
+
+      test("or undefined", function() {
+        hbs.renderFile(
+          DATA + "/helpers/or1.hbs",
+          {scope: {one: undefined}}
+        ).must.be.eq("false\n");
+      });
+
+      test("or true true", function() {
+        hbs.renderFile(
+          DATA + "/helpers/or2.hbs",
+          {scope: {one: true, two: true}}
+        ).must.be.eq("true\n");
+      });
+
+      test("or true false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/or2.hbs",
+          {scope: {one: true, two: false}}
+        ).must.be.eq("true\n");
+      });
+
+      test("or false false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/or2.hbs",
+          {scope: {one: false, two: false}}
+        ).must.be.eq("false\n");
+      });
+
+      test("or false true", function() {
+        hbs.renderFile(
+          DATA + "/helpers/or2.hbs",
+          {scope: {one: false, two: true}}
+        ).must.be.eq("true\n");
+      });
+
+      test("or false false false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/or3.hbs",
+          {scope: {one: false, two: false, three: false}}
+        ).must.be.eq("false\n");
+      });
+
+      test("or false false true", function() {
+        hbs.renderFile(
+          DATA + "/helpers/or3.hbs",
+          {scope: {one: false, two: false, three: true}}
+        ).must.be.eq("true\n");
+      });
+
+      test("or false true false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/or3.hbs",
+          {scope: {one: false, two: true, three: false}}
+        ).must.be.eq("true\n");
+      });
+
+      test("or false true true", function() {
+        hbs.renderFile(
+          DATA + "/helpers/or3.hbs",
+          {scope: {one: false, two: true, three: true}}
+        ).must.be.eq("true\n");
+      });
+
+      test("or true false false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/or3.hbs",
+          {scope: {one: true, two: false, three: false}}
+        ).must.be.eq("true\n");
+      });
+
+      test("or true false true", function() {
+        hbs.renderFile(
+          DATA + "/helpers/or3.hbs",
+          {scope: {one: true, two: false, three: true}}
+        ).must.be.eq("true\n");
+      });
+
+      test("or true true false", function() {
+        hbs.renderFile(
+          DATA + "/helpers/or3.hbs",
+          {scope: {one: true, two: true, three: false}}
+        ).must.be.eq("true\n");
+      });
+
+      test("or true true true", function() {
+        hbs.renderFile(
+          DATA + "/helpers/or3.hbs",
+          {scope: {one: true, two: true, three: true}}
+        ).must.be.eq("true\n");
+      });
+    });
+
     suite("like", function() {
       test("like value pattern:string : true", function() {
         hbs.renderFile(
