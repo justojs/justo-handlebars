@@ -20,11 +20,31 @@ var registerBuiltInHelpers = Symbol();var _class = function () {
 
 
     registerBuiltInHelpers, value: function value() {
+      this.registerHelper("set", function () {
+        var obj, name, val, data, dot;for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {args[_key] = arguments[_key];}
+
+
+        if (args.length >= 3) {;name = args[0];val = args[1];data = args[2];}
+
+
+        data = data.data.root;
+
+
+        if ((dot = name.indexOf(".")) >= 0) {
+          obj = name.slice(0, dot);
+          name = name.slice(dot + 1);
+        }
+
+
+        if (obj) data[obj][name] = val;else
+        data[name] = val;
+      });
+
       this.registerHelper("and", function () {
         var res;
 
 
-        res = false;for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {args[_key] = arguments[_key];}var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {
+        res = false;for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {args[_key2] = arguments[_key2];}var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {
 
           for (var _iterator = args.slice(0, args.length - 1)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {var value = _step.value;
             res = !!value;
@@ -39,7 +59,7 @@ var registerBuiltInHelpers = Symbol();var _class = function () {
         var res;
 
 
-        res = false;for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {args[_key2] = arguments[_key2];}var _iteratorNormalCompletion2 = true;var _didIteratorError2 = false;var _iteratorError2 = undefined;try {
+        res = false;for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {args[_key3] = arguments[_key3];}var _iteratorNormalCompletion2 = true;var _didIteratorError2 = false;var _iteratorError2 = undefined;try {
 
           for (var _iterator2 = args.slice(0, args.length - 1)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {var value = _step2.value;
             res = !!value;
@@ -85,11 +105,11 @@ var registerBuiltInHelpers = Symbol();var _class = function () {
         return text ? text[0].toLowerCase() + text.slice(1) : "";
       });
 
-      this.registerHelper("concat", function () {for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {args[_key3] = arguments[_key3];}
+      this.registerHelper("concat", function () {for (var _len4 = arguments.length, args = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {args[_key4] = arguments[_key4];}
         return args.slice(0, args.length - 1).join("");
       });
 
-      this.registerHelper("replace", function () {for (var _len4 = arguments.length, args = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {args[_key4] = arguments[_key4];}
+      this.registerHelper("replace", function () {for (var _len5 = arguments.length, args = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {args[_key5] = arguments[_key5];}
         return args[0].replace(args[1], typeof args[2] == "string" ? args[2] : "");
       });
 
@@ -132,7 +152,7 @@ var registerBuiltInHelpers = Symbol();var _class = function () {
       });
 
       this.registerHelper("in", function (value) {
-        var coll;for (var _len5 = arguments.length, rest = Array(_len5 > 1 ? _len5 - 1 : 0), _key5 = 1; _key5 < _len5; _key5++) {rest[_key5 - 1] = arguments[_key5];}
+        var coll;for (var _len6 = arguments.length, rest = Array(_len6 > 1 ? _len6 - 1 : 0), _key6 = 1; _key6 < _len6; _key6++) {rest[_key6 - 1] = arguments[_key6];}
 
 
         if (rest.length == 2) coll = rest[0];else
@@ -143,7 +163,7 @@ var registerBuiltInHelpers = Symbol();var _class = function () {
       });
 
       this.registerHelper("nin", function (value) {
-        var coll;for (var _len6 = arguments.length, rest = Array(_len6 > 1 ? _len6 - 1 : 0), _key6 = 1; _key6 < _len6; _key6++) {rest[_key6 - 1] = arguments[_key6];}
+        var coll;for (var _len7 = arguments.length, rest = Array(_len7 > 1 ? _len7 - 1 : 0), _key7 = 1; _key7 < _len7; _key7++) {rest[_key7 - 1] = arguments[_key7];}
 
 
         if (rest.length == 2) coll = rest[0];else

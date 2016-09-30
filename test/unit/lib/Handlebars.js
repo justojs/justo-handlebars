@@ -56,6 +56,32 @@ suite("Handlebars", function() {
       hbs.hasHelper("test").must.be.eq(false);
     });
 
+    suite("set", function() {
+      test("set var val", function() {
+        hbs.renderFile(
+          DATA + "/helpers/set-var-init.hbs",
+          {scope: {}}
+        ).must.be.eq("123\n");
+
+        hbs.renderFile(
+          DATA + "/helpers/set-var-fin.hbs",
+          {}
+        ).must.be.eq("\n");
+      });
+
+      test("set obj.prop val", function() {
+        hbs.renderFile(
+          DATA + "/helpers/set-obj-prop-init.hbs",
+          {scope: {}}
+        ).must.be.eq("123\n");
+
+        hbs.renderFile(
+          DATA + "/helpers/set-obj-prop-fin.hbs",
+          {scope: {}}
+        ).must.be.eq("\n");
+      });
+    });
+
     suite("and", function() {
       test("and true", function() {
         hbs.renderFile(

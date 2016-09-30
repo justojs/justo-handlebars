@@ -1,11 +1,11 @@
 {
   "name": "justo-handlebars",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Handlebars support for Justo.js.",
   "homepage": "http://justojs.org",
   "author": {
     "name": "Justo Labs",
-    "email": "info@justolabs.com",
+    "email": "hello@justolabs.com",
     "url": "http://justojs.org"
   },
   "contributors": [
